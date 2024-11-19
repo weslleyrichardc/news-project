@@ -19,6 +19,11 @@ class Article extends Model
         'category_id',
     ];
 
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
     public function category(): HasOne
     {
         return $this->hasOne(Category::class);

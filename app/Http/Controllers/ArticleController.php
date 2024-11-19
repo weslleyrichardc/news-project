@@ -15,10 +15,10 @@ class ArticleController extends Controller
     {
         $articles = Article::query()
             ->latest('updated_at')
-            ->paginate(5);
+            ->paginate(4);
 
         return view('articles.index', [
-            'articles' => $articles
+            'articles' => $articles,
         ]);
     }
 
@@ -36,7 +36,7 @@ class ArticleController extends Controller
     public function show(Article $article): View
     {
         return view('articles.show', [
-            'article' => $article
+            'article' => $article,
         ]);
     }
 
