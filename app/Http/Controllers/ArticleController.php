@@ -58,8 +58,10 @@ class ArticleController extends Controller
         //
     }
 
-    public function destroy(Article $article)
+    public function destroy(Article $article): RedirectResponse
     {
-        //
+        $article->delete();
+
+        return redirect()->route('articles.index');
     }
 }
