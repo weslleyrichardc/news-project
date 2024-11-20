@@ -5,7 +5,7 @@ namespace App\Models;
 use Database\Factories\CategoryFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Category extends Model
 {
@@ -17,8 +17,8 @@ class Category extends Model
         'slug',
     ];
 
-    public function articles(): BelongsTo
+    public function article(): HasOne
     {
-        return $this->belongsTo(Article::class);
+        return $this->hasOne(Article::class);
     }
 }

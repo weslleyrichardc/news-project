@@ -3,36 +3,49 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Category;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class ArticleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index(): View
     {
         $articles = Article::query()
+            ->when(request('search'), function ($query, $search) {
+                $query->whereLike('title', '%'.$search.'%');
+                $query->whereLike('content', '%'.$search.'%');
+            })
+            ->when(request('category'), function ($query, $category) {
+                $query->where('category_id', $category);
+            })
             ->latest('updated_at')
             ->paginate(4);
 
         return view('articles.index', [
             'articles' => $articles,
+            'categories' => Category::all()->pluck('name', 'id'),
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function store(Request $request): RedirectResponse
     {
-        //
+        $validatedRequest = $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'content' => ['required', 'max:500'],
+            'category_id' => ['required', 'exists:categories,id'],
+        ]);
+
+        Article::query()->create(array_merge(
+            $validatedRequest,
+            ['slug' => Str::of($validatedRequest['title'])->slug('-')]
+        ));
+
+        return redirect()->route('articles.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Article $article): View
     {
         return view('articles.show', [
@@ -40,25 +53,11 @@ class ArticleController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Article $article)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Article $article)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Article $article)
     {
         //

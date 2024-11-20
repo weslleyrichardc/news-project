@@ -10,14 +10,14 @@ Este é um sistema simples de gerenciamento de notícias desenvolvido em Laravel
 
 ## 📦 Funcionalidades
 
-- [ ] **Cadastro de Notícias:**
-  - [ ] Registre notícias com título, conteúdo e categoria.
+- [X] **Cadastro de Notícias:**
+  - [X] Registre notícias com título, conteúdo e categoria.
 - [ ] **Cadastro de Categorias:**
   - [ ] Adicione, edite e exclua categorias para organizar as notícias.
-- [ ] **Busca de Notícias:**
-  - [ ] Permite buscar notícias cadastradas pelo título ou categoria.
-- [ ] **Interface Amigável:**
-  - [ ] Estilização básica para uma melhor experiência do usuário.
+- [X] **Busca de Notícias:**
+  - [X] Permite buscar notícias cadastradas pelo título ou categoria.
+- [X] **Interface Amigável:**
+  - [X] Estilização básica para uma melhor experiência do usuário.
 
 ## 📚 Requisitos
 
