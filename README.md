@@ -2,6 +2,8 @@
 
 Este é um sistema simples de gerenciamento de notícias desenvolvido em Laravel, com suporte para cadastro de notícias e categorias, além de busca por título ou categoria.
 
+![img.png](img.png)
+
 ## 🚀 Tecnologias Utilizadas
 
 - [Laravel](https://laravel.com/) - Framework PHP para desenvolvimento backend.
@@ -12,8 +14,8 @@ Este é um sistema simples de gerenciamento de notícias desenvolvido em Laravel
 
 - [X] **Cadastro de Notícias:**
   - [X] Registre notícias com título, conteúdo e categoria.
-- [ ] **Cadastro de Categorias:**
-  - [ ] Adicione, edite e exclua categorias para organizar as notícias.
+- [X] **Cadastro de Categorias:**
+  - [X] Adicione, edite e exclua categorias para organizar as notícias.
 - [X] **Busca de Notícias:**
   - [X] Permite buscar notícias cadastradas pelo título ou categoria.
 - [X] **Interface Amigável:**
